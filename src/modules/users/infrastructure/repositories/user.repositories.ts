@@ -23,4 +23,9 @@ export class UserRepositories implements IUserRepositories {
 
         return users;
     }
+
+    public async getUserByEmail(email: string): Promise<UserORM> {
+        const users: UserORM[] = await this.repoORM.findBy({ email });
+        return users[0];
+    }
 }

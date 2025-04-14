@@ -3,6 +3,7 @@ import { CreateUserDto } from '../../interface/dto/user.dto';
 import { User } from '../../domain/entities/user.entity';
 import { UserRepositories } from '../../infrastructure/repositories/user.repositories';
 import * as bcrypt from 'bcrypt';
+import { UserORM } from '../../infrastructure/typeorm/user.orm.entity';
 
 @Injectable()
 export class UserService {
@@ -20,5 +21,10 @@ export class UserService {
 
     async getAll(): Promise<User[]> {
         return this.userRepo.getAll();
+    }
+
+    async findByEmail(email: string): Promise<UserORM> {
+        const user = await this.userRepo.getUserByEmail(email);
+        return user;
     }
 }
