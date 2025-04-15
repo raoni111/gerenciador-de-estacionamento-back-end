@@ -14,8 +14,12 @@ export class AuthService implements IAuthService {
 
     async validateUser(email: string, password: string): Promise<any> {
         const user: UserORM = await this.userService.findByEmail(email);
+        if (!user) {
+            return null;
+        }
+
         const isPassword = await bcrypt.compare(password, user.password);
-        if (user && isPassword) {
+        if (isPassword) {
             const { password, ...result } = user;
 
             return result;

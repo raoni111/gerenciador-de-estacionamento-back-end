@@ -19,7 +19,7 @@ export class UserService {
         return res;
     }
 
-    async getAll(): Promise<User[]> {
+    async getAll(): Promise<UserORM[]> {
         return this.userRepo.getAll();
     }
 

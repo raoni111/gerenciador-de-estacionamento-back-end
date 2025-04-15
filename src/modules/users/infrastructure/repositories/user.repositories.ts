@@ -18,8 +18,10 @@ export class UserRepositories implements IUserRepositories {
         return response;
     }
 
-    public async getAll(): Promise<User[]> {
-        const users: User[] = await this.repoORM.query('SELECT id, name, email, ruleId FROM users');
+    public async getAll(): Promise<UserORM[]> {
+        const users: UserORM[] = await this.repoORM.find({
+            select: ['id', 'name', 'email', 'rule']
+        });
 
         return users;
     }

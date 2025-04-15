@@ -8,10 +8,15 @@ export class AuthController {
     constructor(private readonly authService: AuthService) {}
 
     @Post('login')
-    async login(@Body() loginDto: AuthDto) {
+    async login(@Body() loginDto: AuthDto, @Res() res: Response) {
         const user = await this.authService.validateUser(loginDto.email, loginDto.password);
-
-        if (!user) throw new UnauthorizedException('Credenciais invalidas!');
+        if (!user) {
+            res.status(400).json({
+                statusCode: 400,
+                message: 'Email ou senha esta incorreto'
+            });
+            return;
+        }
 
         return this.authService.login(user);
     }
