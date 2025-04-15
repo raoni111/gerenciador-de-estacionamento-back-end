@@ -29,10 +29,10 @@ export class AuthService implements IAuthService {
     }
 
     login(login: any) {
-        const payload = { sub: login.id, rule: login.rule.name };
-
+        const payload = { sub: login.id, role: login.role.name };
+        const access_token = this.jwtService.sign(payload);
         return {
-            access_token: this.jwtService.sign(payload)
+            access_token
         };
     }
 }

@@ -1,22 +1,22 @@
 import { Body, Controller, Post, Res } from '@nestjs/common';
-import { RuleService } from '../../application/rule-case/rule-case.service';
-import { RuleDto } from '../dto/rule.dto';
+import { RoleService } from '../../application/role-case/role-case.service';
+import { RoleDto } from '../dto/role.dto';
 import { Response } from 'express';
 
-@Controller('rule')
-export class RuleController {
-    constructor(private readonly ruleService: RuleService) {}
+@Controller('role')
+export class RoleController {
+    constructor(private readonly roleService: RoleService) {}
 
     @Post()
-    public async save(@Body() ruleDto: RuleDto, @Res() res: Response) {
-        this.ruleService
-            .save(ruleDto)
+    public async save(@Body() roleDto: RoleDto, @Res() res: Response) {
+        this.roleService
+            .save(roleDto)
             .then(() => {
                 res.status(200).json({
                     statusCode: 200,
                     message: 'Permissão criada com sucesso',
                     data: {
-                        ruleDto
+                        roleDto
                     }
                 });
             })

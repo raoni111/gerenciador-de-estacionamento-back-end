@@ -1,3 +1,3 @@
-export class Rule {
+export class Role {
     constructor(public readonly name: string) {}
 }

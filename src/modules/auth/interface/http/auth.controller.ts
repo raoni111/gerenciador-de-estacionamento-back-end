@@ -18,6 +18,6 @@ export class AuthController {
             return;
         }
 
-        return this.authService.login(user);
+        res.status(200).json(this.authService.login(user))
     }
 }

@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './modules/users/user.module';
-import { RuleModule } from './modules/rules/rule.module';
+import { RoleModule } from './modules/role/role.module';
 import { AuthModule } from './modules/auth/auth.module';
 import * as dotenv from 'dotenv';
 
@@ -20,7 +20,7 @@ dotenv.config();
             synchronize: true
         }),
         UserModule,
-        RuleModule,
+        RoleModule,
         AuthModule
     ],
     controllers: [],
