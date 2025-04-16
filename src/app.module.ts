@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './modules/users/user.module';
 import { RoleModule } from './modules/role/role.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { ParkingLotModule } from "./modules/parking_lot/parking-lot.module";
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -21,7 +22,8 @@ dotenv.config();
         }),
         UserModule,
         RoleModule,
-        AuthModule
+        AuthModule,
+        ParkingLotModule,
     ],
     controllers: [],
     providers: []
